@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap';
 import App from './App'
 import Navbar from './components/Navbar';
-import Form from './components/Form';
+
 
 ReactDOM.render(
   <React.StrictMode>
