@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = () => {
+const Table = (props) => {
   return (
     <table className="table table-striped table-bordered">
       <thead>
@@ -20,57 +20,45 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>José</td>
-          <td>Cocinar</td>
-          <td>
-            <div className="container text-center">
-              <button
-                type="button"
-                className="btn"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Editar"
-              >
-                <i className="far fa-edit"></i>
-              </button>
-              <button type="button"
-                className="btn"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Eliminar"
-              >
-                <i className="fas fa-times text-danger"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Mario</td>
-          <td>Ordenar</td>
-          <td>
-            <div className="container text-center">
-              <button type="button"
-                className="btn"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Editar"
-              >
-                <i className="far fa-edit"></i>
-              </button>
-              <button type="button"
-                className="btn"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Eliminar"
-              >
-                <i className="fas fa-times text-danger"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
+        {
+          props.task.length > 0 ?
+            props.task.map((task) => (
+              <tr key={task.id}>
+                <th scope="row">{task.id}</th>
+                <td>{task.name}</td>
+                <td>{task.description}</td>
+                <td>
+                  <div className="container text-center">
+                    <button
+                      type="button"
+                      className="btn far fa-edit"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Editar"
+                    >
+                    </button>
+                    <button
+                      onClick={() => props.deleteTask(task.id)}
+                      type="button"
+                      className="btn"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Eliminar"
+                    >
+                      <i className="fas fa-times text-danger"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            )) : (
+              <tr className="container text-center text-danger">
+                <td></td>
+                <td> <h1>No tasks for now</h1></td>
+                <td></td>
+                <td></td>
+              </tr>
+            )
+        }
       </tbody>
     </table>
   );

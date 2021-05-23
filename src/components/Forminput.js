@@ -8,7 +8,14 @@ const Forminput = (props) => {
       <label className="form-label">
         {props.title}
       </label>
-      <input name={props.name} value={props.value} type="text" className="form-control" id={props.id} onChange={props.onChange}/>
+      <input 
+        name={props.name} 
+        value={props.value} 
+        type="text" 
+        className="form-control" 
+        id={props.id} 
+        onChange={props.onChange}
+      />
     </div>
   );
 };
